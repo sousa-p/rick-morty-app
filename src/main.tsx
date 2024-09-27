@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import App from "./views/App.tsx";
 import "./index.css";
 import {
   IonButtons,
@@ -15,7 +15,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import MenuComponent from "./components/MenuComponent.tsx";
+import MenuComponent from "./views/components/MenuComponent.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
