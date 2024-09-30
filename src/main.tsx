@@ -11,7 +11,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import MenuComponent from "./views/components/MenuComponent.tsx";
+import MenuComponent from "./views/shared/components/MenuComponent.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
