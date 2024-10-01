@@ -1,7 +1,7 @@
 import { setupIonicReact } from "@ionic/react";
 import "./AppComponent.css";
 import "@ionic/react/css/core.css";
-import MenuComponent from "./shared/components/MenuComponent";
+import MenuComponent from "./shared/components/MenuComponent/MenuComponent";
 import {
   IonButtons,
   IonContent,
