@@ -1,5 +1,6 @@
 import Gender from "../enums/Gender";
 import Status from "../enums/Status";
+import ObjectAPI from "./ObjectAPI";
 
 interface Character {
     id: number,
@@ -8,10 +9,10 @@ interface Character {
     species: string,
     type: string,
     gender: Gender,
-    origin: Object,
-    location: Object,
+    origin: ObjectAPI,
+    location: ObjectAPI,
     image: string,
-    episode: string[],
+    episode: string[] | ObjectAPI,
     url: string,
     created: string,
 

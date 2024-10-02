@@ -1,6 +1,17 @@
-import { setupIonicReact } from "@ionic/react";
+import { IonApp, setupIonicReact } from "@ionic/react";
 import "./AppComponent.css";
 import "@ionic/react/css/core.css";
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css';
+import '@ionic/react/css/typography.css';
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
+import '@ionic/react/css/palettes/dark.always.css';
+
 import MenuComponent from "./shared/components/MenuComponent/MenuComponent";
 import {
   IonButtons,
@@ -16,7 +27,7 @@ setupIonicReact();
 
 function AppComponent({ Page }: { Page: React.ComponentType}) {
   return (
-    <>
+    <IonApp>
       <MenuComponent></MenuComponent>
       <IonPage id="main-content">
         <IonHeader>
@@ -31,7 +42,7 @@ function AppComponent({ Page }: { Page: React.ComponentType}) {
           <Page></Page>
         </IonContent>
       </IonPage>
-    </>
+    </IonApp>
   );
 }
 

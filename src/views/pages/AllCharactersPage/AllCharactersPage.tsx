@@ -7,10 +7,10 @@ import {
 import { useEffect, useState } from "react";
 import { CharacterService } from "../../../services/characters/characterService";
 import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
-import CardComponent from "../../shared/components/CardComponent/CardComponent";
 import Character from "../../../interfaces/Character";
 import "./AllCharactersPage.css";
 import Info from "../../../interfaces/Info";
+import CharacterCardComponent from "./components/CharacterCardComponent";
 
 function AllCharacterPage() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -39,13 +39,9 @@ function AllCharacterPage() {
         <div className="wrapper_characters">
           {data.map((character) => {
             return (
-              <CardComponent
-                key={character.id}
-                title={character.name}
-                subtitle={character.status}
-                imgSrc={character.image}
-                content={character.origin.toString()}
-              ></CardComponent>
+              <CharacterCardComponent
+                character={character}
+              ></CharacterCardComponent>
             );
           })}
         </div>
