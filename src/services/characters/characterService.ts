@@ -1,11 +1,11 @@
+import Character from "../../interfaces/Character";
 import ResponseAPI from "../../interfaces/ResponseAPI";
 import { Service } from "../service"
 
 export const CharacterService = {
-    getAll: async (): Promise<ResponseAPI<CharacterData>> => {
-        const url = `${Service.url}/character`;
+    getAll: async (url?: string): Promise<ResponseAPI<Character>> => {
         try {
-            const response = await Service.get<ResponseAPI<CharacterData>>(url);
+            const response = await Service.get<ResponseAPI<Character>>(url ?? `${Service.url}/character/?page=1`);
             return response;
         } catch (error) {
             console.error("Erro ao buscar personagens:", error);
