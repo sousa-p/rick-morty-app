@@ -1,14 +1,16 @@
 import {
+  IonCol,
   IonContent,
   IonGrid,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
+  IonRow,
+  IonSearchbar,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { CharacterService } from "../../../services/characters/characterService";
 import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
 import Character from "../../../interfaces/Character";
-import "./AllCharactersPage.css";
 import Info from "../../../interfaces/Info";
 import CharacterCardComponent from "./components/CharacterCardComponent";
 
@@ -28,27 +30,61 @@ function AllCharacterPage() {
       });
   }
 
+  function searchCharacters(ev: Event) {
+    let query = "";
+    const target = ev.target as HTMLIonSearchbarElement;
+    if (target) query = target.value!.toLowerCase();
+
+    setLoading(true);
+    CharacterService.search(query)
+      .then((response) => {
+        setInfo(response.info);
+        setData(response.results);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
   useEffect(() => {
     getCharacters(info?.next);
   }, []);
 
-  if (loading) return <LoadingComponent></LoadingComponent>;
+  let content;
+
+  if (loading) content = <LoadingComponent></LoadingComponent>;
+  else
+    content = data.map((character) => {
+      return (
+        <CharacterCardComponent
+          key={character.name}
+          character={character}
+        ></CharacterCardComponent>
+      );
+    });
+
   return (
     <IonContent>
       <IonGrid>
-        <div className="wrapper_characters">
-          {data.map((character) => {
-            return (
-              <CharacterCardComponent
-                character={character}
-              ></CharacterCardComponent>
-            );
-          })}
-        </div>
+        <IonCol size="12">
+          <IonRow class="ion-justify-content-center">
+            <IonCol size="6">
+              <IonSearchbar
+                animated={true}
+                debounce={500}
+                onIonInput={(ev) => searchCharacters(ev)}
+                placeholder="Search the Character"
+              ></IonSearchbar>
+            </IonCol>
+          </IonRow>
+        </IonCol>
+        <IonCol size="12">
+          <IonRow class="ion-justify-content-center">{content}</IonRow>
+        </IonCol>
       </IonGrid>
       <IonInfiniteScroll
         onIonInfinite={(ev) => {
-          if (info?.next && !loading && data.length) {
+          if (info?.next) {
             getCharacters(info.next);
             setTimeout(() => ev.target.complete(), 500);
           } else {

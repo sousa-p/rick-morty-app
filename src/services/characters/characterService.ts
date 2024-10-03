@@ -11,5 +11,15 @@ export const CharacterService = {
             console.error("Erro ao buscar personagens:", error);
             throw error;
         }
+    },
+
+    search:  async (search?: string): Promise<ResponseAPI<Character>> => {
+        try {
+            const url: string | undefined = (search) ? `${Service.url}/character/?name=${search}` : undefined;
+            return CharacterService.getAll(url);
+        } catch (error) {
+            console.error("Erro ao buscar personagens:", error);
+            throw error;
+        }
     }
 }
