@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppComponent from "./views/AppComponent";
 import AllCharacterPage from "./views/pages/AllCharactersPage/AllCharactersPage";
 import FavoritesCharactersPage from "./views/pages/FavoritesCharactersPage/FavoritesCharactersPage";
+import AboutPage from "./views/pages/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/favorites",
     element: <AppComponent Page={FavoritesCharactersPage}></AppComponent>,
+  },
+  {
+    path: "/about",
+    element: <AppComponent Page={AboutPage}></AppComponent>,
   },
 ]);
 

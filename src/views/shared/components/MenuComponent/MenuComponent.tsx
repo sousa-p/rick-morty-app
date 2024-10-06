@@ -29,9 +29,11 @@ const MenuComponent = () => {
               <IonLabel>Favorites</IonLabel>
             </IonItem>
           </Link>
-          <IonItem>
-            <IonLabel>About</IonLabel>
-          </IonItem>
+          <Link to={"/about"}>
+            <IonItem>
+              <IonLabel>About</IonLabel>
+            </IonItem>
+          </Link>
         </IonList>
       </IonContent>
       <IonRow class="ion-padding ion-justify-content-center">
