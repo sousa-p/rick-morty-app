@@ -68,7 +68,7 @@ function AllCharacterPage() {
       <IonGrid>
         <IonCol size="12">
           <IonRow class="ion-justify-content-center">
-            <IonCol size="6">
+            <IonCol size="12" sizeMd="9" sizeLg="6">
               <IonSearchbar
                 animated={true}
                 debounce={500}

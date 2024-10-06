@@ -1,4 +1,4 @@
-import { IonApp, setupIonicReact } from "@ionic/react";
+import { IonApp, IonFooter, IonRow, setupIonicReact } from "@ionic/react";
 import "./AppComponent.css";
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
@@ -22,6 +22,8 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
+import PicleRick from "../assets/piclerick.png";
+
 setupIonicReact();
 
 function AppComponent({ Page }: { Page: React.ComponentType }) {
@@ -40,6 +42,14 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
         <IonContent className="ion-padding">
           <Page></Page>
         </IonContent>
+        <IonFooter>
+          <IonToolbar>
+            <IonRow class="ion-justify-content-end">
+              <IonTitle>So Many Ricks!</IonTitle>
+              <img src={PicleRick}></img>
+            </IonRow>
+          </IonToolbar>
+        </IonFooter>
       </IonPage>
     </IonApp>
   );
