@@ -4,11 +4,13 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonCol,
   IonRow,
   IonText,
 } from "@ionic/react";
 import Character from "../../../../interfaces/Character";
 import StatusIconComponent from "./StatusIconComponent";
+import FavBtnComponent from "./FavBtnComponent";
 
 interface CardProps {
   character: Character;
@@ -31,10 +33,17 @@ const CharacterCardComponent: React.FC<CardProps> = ({ character }) => {
       </IonCardHeader>
       <IonCardContent>
         <IonRow>
-          <IonText>{"Origin: " + character.origin.name}</IonText>
-        </IonRow>
-        <IonRow>
-          <IonText>{"Gender: " + character.gender}</IonText>
+          <IonCol>
+            <IonRow>
+              <IonText>{"Origin: " + character.origin.name}</IonText>
+            </IonRow>
+            <IonRow>
+              <IonText>{"Gender: " + character.gender}</IonText>
+            </IonRow>
+          </IonCol>
+          <IonRow class="ion-justify-content-end">
+            <FavBtnComponent id={character.id}></FavBtnComponent>
+          </IonRow>
         </IonRow>
       </IonCardContent>
     </IonCard>
