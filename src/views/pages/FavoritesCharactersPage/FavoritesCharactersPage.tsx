@@ -3,7 +3,8 @@ import { CharacterService } from "../../../services/characters/characterService"
 import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
 import Character from "../../../interfaces/Character";
 import CharacterCardComponent from "../../shared/components/CharacterCardComponent/CharacterCardComponent";
-import { IonCol, IonContent, IonGrid, IonRow } from "@ionic/react";
+import { IonCol, IonContent, IonGrid, IonRow, IonTitle } from "@ionic/react";
+import noFavorites from "../../../assets/noFavorites.png";
 
 function FavoritesCharactersPage() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,7 +45,15 @@ function FavoritesCharactersPage() {
         ></CharacterCardComponent>
       );
     });
-  else content = <p>Nenhum personagem favoritado</p>;
+  else
+    content = (
+      <IonRow class="ion-justify-content-center">
+        <IonCol>
+          <IonTitle class="ion-padding">Is Everyone Boring To You?</IonTitle>
+          <img src={noFavorites} style={{ height: "22.5rem" }}></img>
+        </IonCol>
+      </IonRow>
+    );
 
   return (
     <IonContent>
