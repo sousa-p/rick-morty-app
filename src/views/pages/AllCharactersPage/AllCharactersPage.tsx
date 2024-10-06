@@ -14,11 +14,20 @@ import {
   IonRow,
   IonSearchbar,
 } from "@ionic/react";
+import Filter from "../../../interfaces/Filter";
+import Status from "../../../enums/Status";
+import Gender from "../../../enums/Gender";
 
 function AllCharacterPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [info, setInfo] = useState<Info | null>(null);
   const [data, setData] = useState<Character[]>([]);
+  const [filter, setFilter] = useState<Filter>({
+    query: "",
+    species: "",
+    status: Status.None,
+    gender: Gender.None,
+  });
 
   function getCharacters(url?: string) {
     CharacterService.getAll(url)
@@ -31,13 +40,17 @@ function AllCharacterPage() {
       });
   }
 
-  function searchCharacters(ev: Event) {
+  function onSearch(ev: Event) {
     let query = "";
     const target = ev.target as HTMLIonSearchbarElement;
     if (target) query = target.value!.toLowerCase();
+    setFilter({ ...filter, query: query });
+    searchCharacters({ ...filter, query: query });
+  }
 
+  function searchCharacters(filter: Filter) {
     setLoading(true);
-    CharacterService.search(query)
+    CharacterService.search(filter)
       .then((response) => {
         setInfo(response.info);
         setData(response.results);
@@ -73,11 +86,15 @@ function AllCharacterPage() {
               <IonSearchbar
                 animated={true}
                 debounce={500}
-                onIonInput={(ev) => searchCharacters(ev)}
+                onIonInput={(ev) => onSearch(ev)}
                 placeholder="Search the Character"
               ></IonSearchbar>
             </IonCol>
-            <FilterComponent></FilterComponent>
+            <FilterComponent
+              filter={filter}
+              setFilter={setFilter}
+              onClose={searchCharacters}
+            ></FilterComponent>
           </IonRow>
         </IonCol>
         <IonCol size="12">

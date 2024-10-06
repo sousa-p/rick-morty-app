@@ -1,4 +1,5 @@
 import Character from "../../interfaces/Character";
+import Filter from "../../interfaces/Filter";
 import ResponseAPI from "../../interfaces/ResponseAPI";
 import { Service } from "../service"
 
@@ -13,9 +14,10 @@ export const CharacterService = {
         }
     },
 
-    search:  async (search?: string): Promise<ResponseAPI<Character>> => {
+    search:  async (filter?: Filter): Promise<ResponseAPI<Character>> => {
         try {
-            const url: string | undefined = (search) ? `${Service.url}/character/?name=${search}` : undefined;
+            const params = `name=${filter?.query}&status=${filter?.status}&gender=${filter?.gender}&species=${filter?.species}`;
+            const url: string | undefined = `${Service.url}/character/?${params}`;
             return CharacterService.getAll(url);
         } catch (error) {
             console.error("Erro ao buscar personagens:", error);

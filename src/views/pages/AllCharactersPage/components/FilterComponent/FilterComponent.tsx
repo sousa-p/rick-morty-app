@@ -13,10 +13,30 @@ import {
   IonSelectOption,
 } from "@ionic/react";
 import { CloseOutline, FilterOutline } from "react-ionicons";
+import Filter from "../../../../../interfaces/Filter";
+import Status from "../../../../../enums/Status";
+import Gender from "../../../../../enums/Gender";
 
-function FilterComponent() {
+interface FilterComponentProps {
+  filter: Filter;
+  setFilter: (filter: Filter) => void;
+  onClose: (filter: Filter) => void;
+}
+
+function FilterComponent({ filter, setFilter, onClose }: FilterComponentProps) {
   const modal = useRef<HTMLIonModalElement>(null);
-  const input = useRef<HTMLIonInputElement>(null);
+
+  const updateSpecies = (e: any) => {
+    setFilter({ ...filter, species: e.detail.value });
+  };
+
+  const updateStatus = (e: any) => {
+    setFilter({ ...filter, status: e.detail.value });
+  };
+
+  const updateGender = (e: any) => {
+    setFilter({ ...filter, gender: e.detail.value });
+  };
 
   return (
     <>
@@ -28,7 +48,12 @@ function FilterComponent() {
           <IonToolbar>
             <IonTitle>Filter Your Search</IonTitle>
             <IonButtons slot="end">
-              <IonButton onClick={() => modal.current?.dismiss()}>
+              <IonButton
+                onClick={() => {
+                  modal.current?.dismiss();
+                  onClose(filter);
+                }}
+              >
                 <CloseOutline
                   color={"000000"}
                   title={""}
@@ -44,24 +69,37 @@ function FilterComponent() {
             <IonInput
               label="Enter the Species"
               labelPlacement="stacked"
-              ref={input}
               type="text"
+              value={filter.species}
+              onIonInput={updateSpecies}
               placeholder="Ex.: Human"
             />
           </IonItem>
           <IonItem>
-            <IonSelect label="Enter the Status" placeholder="">
-              <IonSelectOption value="alive">Alive</IonSelectOption>
-              <IonSelectOption value="dead">Dead</IonSelectOption>
-              <IonSelectOption value="unknown">Unknown</IonSelectOption>
+            <IonSelect
+              label="Enter the Status"
+              value={filter.status}
+              onIonChange={updateStatus}
+            >
+              <IonSelectOption value={Status.Alive}>Alive</IonSelectOption>
+              <IonSelectOption value={Status.Dead}>Dead</IonSelectOption>
+              <IonSelectOption value={Status.Unknown}>Unknown</IonSelectOption>
+              <IonSelectOption value={Status.None}>None</IonSelectOption>
             </IonSelect>
           </IonItem>
           <IonItem>
-            <IonSelect label="Enter the Gender" placeholder="">
-              <IonSelectOption value="female">Female</IonSelectOption>
-              <IonSelectOption value="male">Male</IonSelectOption>
-              <IonSelectOption value="genderless">Genderless</IonSelectOption>
-              <IonSelectOption value="unknown">Unknown</IonSelectOption>
+            <IonSelect
+              label="Enter the Gender"
+              value={filter.gender}
+              onIonChange={updateGender}
+            >
+              <IonSelectOption value={Gender.Female}>Female</IonSelectOption>
+              <IonSelectOption value={Gender.Male}>Male</IonSelectOption>
+              <IonSelectOption value={Gender.Genderless}>
+                Genderless
+              </IonSelectOption>
+              <IonSelectOption value={Gender.Unknown}>Unknown</IonSelectOption>
+              <IonSelectOption value={Gender.None}>None</IonSelectOption>
             </IonSelect>
           </IonItem>
         </IonContent>

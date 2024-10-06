@@ -3,6 +3,7 @@ enum Gender {
     Male = 'Male',
     Genderless = 'Genderless',
     Unknown = 'Unknown',
+    None = '',
 };
 
 export default Gender;
