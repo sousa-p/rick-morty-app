@@ -13,6 +13,7 @@ import LoadingComponent from "../../shared/components/LoadingComponent/LoadingCo
 import Character from "../../../interfaces/Character";
 import Info from "../../../interfaces/Info";
 import CharacterCardComponent from "./components/CharacterCardComponent";
+import FilterComponent from "./components/FilterComponent";
 
 function AllCharacterPage() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -75,6 +76,7 @@ function AllCharacterPage() {
                 onIonInput={(ev) => searchCharacters(ev)}
                 placeholder="Search the Character"
               ></IonSearchbar>
+              <FilterComponent></FilterComponent>
             </IonCol>
           </IonRow>
         </IonCol>
