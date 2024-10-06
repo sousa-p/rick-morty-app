@@ -23,10 +23,7 @@ const MenuComponent = () => {
             <IonLabel>Characters</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Episodes</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Locations</IonLabel>
+            <IonLabel>Favorites</IonLabel>
           </IonItem>
           <IonItem>
             <IonLabel>About</IonLabel>

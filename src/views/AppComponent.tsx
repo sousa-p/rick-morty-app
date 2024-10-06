@@ -25,7 +25,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 import MenuComponent from "./shared/components/MenuComponent/MenuComponent";
-import PicleRick from "../assets/piclerick.png";
+import PickleRick from "../assets/picklerick.png";
 import Logo from "../assets/logo.png";
 
 import "../views/shared/variables/variables.css";
@@ -88,8 +88,11 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
         <IonFooter>
           <IonToolbar>
             <IonRow class="ion-justify-content-end">
-              <IonTitle>Desenvolvido Por Pedro S. V. Menck</IonTitle>
-              <img src={PicleRick}></img>
+              <IonTitle>Developed by Pedro S. V. Menck</IonTitle>
+              <img
+                style={{ height: "35px", marginRight: "16px" }}
+                src={PickleRick}
+              ></img>
             </IonRow>
           </IonToolbar>
         </IonFooter>

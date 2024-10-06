@@ -20,10 +20,7 @@ function FilterComponent() {
 
   return (
     <>
-      <IonButton
-        id="open-modal"
-        style={{ "--box-shadow": "none", height: "42px" }}
-      >
+      <IonButton id="open-modal" style={{ height: "42px" }}>
         <FilterOutline color={"000000"} title={""} height="25px" width="25px" />
       </IonButton>
       <IonModal ref={modal} trigger="open-modal">
