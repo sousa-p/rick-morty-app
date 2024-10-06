@@ -8,6 +8,7 @@ import {
   IonMenuButton,
   IonPage,
   IonRow,
+  IonTitle,
   IonToolbar,
   setupIonicReact,
 } from "@ionic/react";
@@ -87,6 +88,7 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
         <IonFooter>
           <IonToolbar>
             <IonRow class="ion-justify-content-end">
+              <IonTitle>Desenvolvido Por Pedro S. V. Menck</IonTitle>
               <img src={PicleRick}></img>
             </IonRow>
           </IonToolbar>

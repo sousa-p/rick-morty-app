@@ -12,33 +12,32 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import { FilterOutline } from "react-ionicons";
+import { CloseOutline, FilterOutline } from "react-ionicons";
 
 function FilterComponent() {
   const modal = useRef<HTMLIonModalElement>(null);
   const input = useRef<HTMLIonInputElement>(null);
 
-  function confirm() {
-    modal.current?.dismiss(input.current?.value, "confirm");
-  }
-
   return (
     <>
-      <IonButton id="open-modal" expand="block" color={"primary"}>
-        <FilterOutline color={"00000"} title={""} height="35px" width="35px" />
+      <IonButton
+        id="open-modal"
+        style={{ "--box-shadow": "none", height: "42px" }}
+      >
+        <FilterOutline color={"000000"} title={""} height="25px" width="25px" />
       </IonButton>
       <IonModal ref={modal} trigger="open-modal">
         <IonHeader>
           <IonToolbar>
-            <IonButtons slot="start">
-              <IonButton onClick={() => modal.current?.dismiss()}>
-                Cancel
-              </IonButton>
-            </IonButtons>
             <IonTitle>Filter Your Search</IonTitle>
             <IonButtons slot="end">
-              <IonButton strong={true} onClick={() => confirm()}>
-                Confirm
+              <IonButton onClick={() => modal.current?.dismiss()}>
+                <CloseOutline
+                  color={"000000"}
+                  title={""}
+                  height="35px"
+                  width="35px"
+                />
               </IonButton>
             </IonButtons>
           </IonToolbar>

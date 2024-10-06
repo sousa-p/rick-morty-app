@@ -1,3 +1,10 @@
+import { useEffect, useState } from "react";
+import { CharacterService } from "../../../services/characters/characterService";
+import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
+import Character from "../../../interfaces/Character";
+import Info from "../../../interfaces/Info";
+import CharacterCardComponent from "./components/CharacterCardComponent";
+import FilterComponent from "./components/FilterComponent";
 import {
   IonCol,
   IonContent,
@@ -7,13 +14,6 @@ import {
   IonRow,
   IonSearchbar,
 } from "@ionic/react";
-import { useEffect, useState } from "react";
-import { CharacterService } from "../../../services/characters/characterService";
-import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
-import Character from "../../../interfaces/Character";
-import Info from "../../../interfaces/Info";
-import CharacterCardComponent from "./components/CharacterCardComponent";
-import FilterComponent from "./components/FilterComponent";
 
 function AllCharacterPage() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -68,7 +68,7 @@ function AllCharacterPage() {
     <IonContent>
       <IonGrid>
         <IonCol size="12">
-          <IonRow class="ion-justify-content-center">
+          <IonRow class="ion-justify-content-center ion-align-items-center">
             <IonCol size="12" sizeMd="9" sizeLg="6">
               <IonSearchbar
                 animated={true}
@@ -76,8 +76,8 @@ function AllCharacterPage() {
                 onIonInput={(ev) => searchCharacters(ev)}
                 placeholder="Search the Character"
               ></IonSearchbar>
-              <FilterComponent></FilterComponent>
             </IonCol>
+            <FilterComponent></FilterComponent>
           </IonRow>
         </IonCol>
         <IonCol size="12">
