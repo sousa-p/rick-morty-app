@@ -1,4 +1,18 @@
-import { IonApp, IonFooter, IonRow, setupIonicReact } from "@ionic/react";
+import {
+  IonApp,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonIcon,
+  IonMenuButton,
+  IonPage,
+  IonRow,
+  IonToolbar,
+  setupIonicReact,
+} from "@ionic/react";
+
 import "./AppComponent.css";
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
@@ -12,21 +26,46 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 import MenuComponent from "./shared/components/MenuComponent/MenuComponent";
-import {
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonMenuButton,
-  IonPage,
-  IonToolbar,
-} from "@ionic/react";
-
 import PicleRick from "../assets/piclerick.png";
 import Logo from "../assets/logo.png";
+
+import "./AppComponent.css";
+
+import { useEffect, useState } from "react";
+import { CloudyNightOutline, SunnyOutline } from "react-ionicons";
 
 setupIonicReact();
 
 function AppComponent({ Page }: { Page: React.ComponentType }) {
+  const getLocalTheme = (): boolean => {
+    const localData: string = localStorage.getItem("isDarkTheme") ?? "false";
+
+    return JSON.parse(localData);
+  };
+
+  const [darkMode, setDarkMode] = useState(getLocalTheme());
+
+  const toggleDarkMode = () => {
+    document.body.classList.toggle("dark-theme", !darkMode);
+    localStorage.setItem("isDarkTheme", JSON.stringify(!darkMode));
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-theme", darkMode);
+  }, []);
+
+  let themeBtnComponent = darkMode ? (
+    <CloudyNightOutline
+      color={"000000"}
+      title={""}
+      height="35px"
+      width="35px"
+    />
+  ) : (
+    <SunnyOutline color={"000000"} title={""} height="35px" width="35px" />
+  );
+
   return (
     <IonApp>
       <MenuComponent></MenuComponent>
@@ -35,6 +74,11 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
           <IonToolbar>
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
+            </IonButtons>
+            <IonButtons slot="end">
+              <IonButton onClick={toggleDarkMode}>
+                {themeBtnComponent}
+              </IonButton>
             </IonButtons>
             <img src={Logo}></img>
           </IonToolbar>
