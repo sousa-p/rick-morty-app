@@ -21,5 +21,15 @@ export const CharacterService = {
             console.error("Erro ao buscar personagens:", error);
             throw error;
         }
-    }
+    },
+
+    getMultiple:  async (charactersId: Array<number>): Promise<Array<Character>> => {
+        try {
+            const response = await Service.get<Array<Character>>(`${Service.url}/character/${JSON.stringify(charactersId)}`);
+            return response;
+        } catch (error) {
+            console.error("Erro ao buscar personagens:", error);
+            throw error;
+        }
+    },
 }

@@ -9,7 +9,7 @@ import {
 
 import RickAndMortyPortal from "../../../../assets/rickAndMortyPortal.png";
 import Logo from "../../../../assets/logo.png";
-
+import { Link } from "react-router-dom";
 
 const MenuComponent = () => {
   return (
@@ -19,12 +19,16 @@ const MenuComponent = () => {
           <img src={Logo}></img>
         </IonRow>
         <IonList className="ion-padding">
-          <IonItem>
-            <IonLabel>Characters</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Favorites</IonLabel>
-          </IonItem>
+          <Link to={"/"}>
+            <IonItem>
+              <IonLabel>Characters</IonLabel>
+            </IonItem>
+          </Link>
+          <Link to={"/favorites"}>
+            <IonItem>
+              <IonLabel>Favorites</IonLabel>
+            </IonItem>
+          </Link>
           <IonItem>
             <IonLabel>About</IonLabel>
           </IonItem>
