@@ -18,11 +18,11 @@ import {
   IonHeader,
   IonMenuButton,
   IonPage,
-  IonTitle,
   IonToolbar,
 } from "@ionic/react";
 
 import PicleRick from "../assets/piclerick.png";
+import Logo from "../assets/logo.png";
 
 setupIonicReact();
 
@@ -36,7 +36,7 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
             </IonButtons>
-            <IonTitle>Rick and Morty API</IonTitle>
+            <img src={Logo}></img>
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
@@ -45,7 +45,6 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
         <IonFooter>
           <IonToolbar>
             <IonRow class="ion-justify-content-end">
-              <IonTitle>So Many Ricks!</IonTitle>
               <img src={PicleRick}></img>
             </IonRow>
           </IonToolbar>

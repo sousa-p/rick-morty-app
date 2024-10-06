@@ -1,31 +1,43 @@
-import { IonContent, IonItem, IonLabel, IonList, IonMenu } from '@ionic/react';
+import {
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonMenu,
+  IonRow,
+} from "@ionic/react";
 
-const MenuComponent
- = () => {
+import RickAndMortyPortal from "../../../../assets/rickAndMortyPortal.png";
+import Logo from "../../../../assets/logo.png";
+import { Link } from "react-router-dom";
+
+const MenuComponent = () => {
   return (
     <IonMenu contentId="main-content">
       <IonContent className="ion-padding">
+        <IonRow class="ion-padding ion-justify-content-center">
+          <img src={Logo}></img>
+        </IonRow>
         <IonList className="ion-padding">
           <IonItem>
-            <IonLabel>Pokémon Yellow</IonLabel>
+            <IonLabel>Characters</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Mega Man X</IonLabel>
+            <IonLabel>Episodes</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>The Legend of Zelda</IonLabel>
+            <IonLabel>Locations</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Pac-Man</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Super Mario World</IonLabel>
+            <IonLabel>About</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>
+      <IonRow class="ion-padding ion-justify-content-center">
+        <img src={RickAndMortyPortal} />
+      </IonRow>
     </IonMenu>
   );
 };
 
-export default MenuComponent
-;
+export default MenuComponent;
