@@ -31,7 +31,6 @@ function AboutPage() {
               </IonText>
             </IonRow>
             <SlidesComponent></SlidesComponent>
-
             <IonRow>
               <IonText class="ion-margin ion-text-justify">
                 Rick, an eccentric and alcoholic mad scientist, rejects societal
@@ -60,7 +59,7 @@ function AboutPage() {
               </IonText>
             </IonRow>
 
-            <img src={OpenYourEyesMorty} style={{ height: "250px" }} />
+            <img src={OpenYourEyesMorty} style={{ height: "20rem" }} />
           </IonCol>
         </IonRow>
       </IonGrid>
