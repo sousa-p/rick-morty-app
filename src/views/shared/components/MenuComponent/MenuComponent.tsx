@@ -9,7 +9,7 @@ import {
 
 import RickAndMortyPortal from "../../../../assets/rickAndMortyPortal.png";
 import Logo from "../../../../assets/logo.png";
-import { Link } from "react-router-dom";
+
 
 const MenuComponent = () => {
   return (

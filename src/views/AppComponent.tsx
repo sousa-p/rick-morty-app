@@ -5,7 +5,6 @@ import {
   IonContent,
   IonFooter,
   IonHeader,
-  IonIcon,
   IonMenuButton,
   IonPage,
   IonRow,
@@ -13,7 +12,6 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 
-import "./AppComponent.css";
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
@@ -29,7 +27,7 @@ import MenuComponent from "./shared/components/MenuComponent/MenuComponent";
 import PicleRick from "../assets/piclerick.png";
 import Logo from "../assets/logo.png";
 
-import "./AppComponent.css";
+import "../views/shared/variables/variables.css";
 
 import { useEffect, useState } from "react";
 import { CloudyNightOutline, SunnyOutline } from "react-ionicons";
@@ -45,15 +43,15 @@ function AppComponent({ Page }: { Page: React.ComponentType }) {
 
   const [darkMode, setDarkMode] = useState(getLocalTheme());
 
+  useEffect(() => {
+    document.body.classList.toggle("dark-theme", darkMode);
+  }, []);
+
   const toggleDarkMode = () => {
     document.body.classList.toggle("dark-theme", !darkMode);
     localStorage.setItem("isDarkTheme", JSON.stringify(!darkMode));
     setDarkMode(!darkMode);
   };
-
-  useEffect(() => {
-    document.body.classList.toggle("dark-theme", darkMode);
-  }, []);
 
   let themeBtnComponent = darkMode ? (
     <CloudyNightOutline
