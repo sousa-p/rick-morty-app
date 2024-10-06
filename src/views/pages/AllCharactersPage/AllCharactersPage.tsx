@@ -3,7 +3,7 @@ import { CharacterService } from "../../../services/characters/characterService"
 import LoadingComponent from "../../shared/components/LoadingComponent/LoadingComponent";
 import Character from "../../../interfaces/Character";
 import Info from "../../../interfaces/Info";
-import CharacterCardComponent from "./components/CharacterCardComponent";
+import CharacterCardComponent from "../../shared/components/CharacterCardComponent/CharacterCardComponent";
 import FilterComponent from "./components/FilterComponent";
 import {
   IonCol,
@@ -69,7 +69,7 @@ function AllCharacterPage() {
       <IonGrid>
         <IonCol size="12">
           <IonRow class="ion-justify-content-center ion-align-items-center">
-            <IonCol size="12" sizeMd="9" sizeLg="6">
+            <IonCol size="10" sizeMd="9" sizeLg="6">
               <IonSearchbar
                 animated={true}
                 debounce={500}

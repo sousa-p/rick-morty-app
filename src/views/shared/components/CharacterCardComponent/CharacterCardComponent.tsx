@@ -9,8 +9,8 @@ import {
   IonText,
 } from "@ionic/react";
 import Character from "../../../../interfaces/Character";
-import StatusIconComponent from "./StatusIconComponent";
-import FavBtnComponent from "./FavBtnComponent";
+import StatusIconComponent from "../StatusIconComponent/StatusIconComponent";
+import FavBtnComponent from "../FavBtnComponent/FavBtnComponent";
 
 interface CardProps {
   character: Character;
