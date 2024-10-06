@@ -4,7 +4,7 @@ import LoadingComponent from "../../shared/components/LoadingComponent/LoadingCo
 import Character from "../../../interfaces/Character";
 import Info from "../../../interfaces/Info";
 import CharacterCardComponent from "../../shared/components/CharacterCardComponent/CharacterCardComponent";
-import FilterComponent from "./components/FilterComponent";
+import FilterComponent from "./components/FilterComponent/FilterComponent";
 import {
   IonCol,
   IonContent,

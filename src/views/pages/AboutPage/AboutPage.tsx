@@ -1,11 +1,12 @@
 import { IonCol, IonContent, IonGrid, IonRow } from "@ionic/react";
+import SlidesComponent from "./components/SlidesComponent/SlidesComponent";
 
 function AboutPage() {
   return (
     <IonContent>
       <IonGrid>
         <IonCol size="12">
-          <IonRow class="ion-justify-content-center"></IonRow>
+          <SlidesComponent></SlidesComponent>
         </IonCol>
       </IonGrid>
     </IonContent>
